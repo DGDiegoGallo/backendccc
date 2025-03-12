@@ -11,17 +11,19 @@ async function bootstrap() {
     origin: [
       'http://localhost:3001',
       'http://localhost:3000',
+      /\.vercel\.app$/,  // Para URLs de Vercel
       /\.ngrok-free\.app$/  // Para URLs de ngrok
+      // Agrega aquí otros dominios permitidos en producción
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     allowedHeaders: [
       'Content-Type', 
       'Authorization', 
-      'X-JWT-Token'  // Para el token JWT cuando usamos ngrok
+      'X-JWT-Token'
     ]
   });
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
