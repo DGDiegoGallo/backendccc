@@ -40,9 +40,8 @@ async function bootstrap() {
   });
 
   const port = process.env.PORT || 3000;
-  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
-  
-  await app.listen(port, host);
-  console.log(`🚀 Servidor corriendo en http://${host}:${port}`);
+  // En Render, siempre debemos usar 0.0.0.0
+  await app.listen(port, '0.0.0.0');
+  console.log(`🚀 Servidor corriendo en puerto ${port}`);
 }
 bootstrap();
