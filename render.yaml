@@ -3,7 +3,7 @@ services:
     name: backend-ccc
     env: docker
     region: oregon
-    plan: starter
+    plan: free
     branch: main
     healthCheckPath: /
     envVars:
@@ -51,4 +51,4 @@ services:
 databases:
   - name: postgres-db
     region: oregon
-    plan: starter 
+    plan: free 
