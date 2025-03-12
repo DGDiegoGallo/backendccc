@@ -25,6 +25,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3001',
       'http://localhost:3000',
+      'https://testing-storefront.vercel.app',
       /\.vercel\.app$/,  // Para URLs de Vercel
       /\.ngrok-free\.app$/  // Para URLs de ngrok
       // Agrega aquí otros dominios permitidos en producción
@@ -38,7 +39,10 @@ async function bootstrap() {
     ]
   });
 
-  // Asegurarse de que la aplicación escuche en '0.0.0.0' para Vercel
-  await app.listen(process.env.PORT || 3000, '0.0.0.0');
+  const port = process.env.PORT || 3000;
+  const host = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+  
+  await app.listen(port, host);
+  console.log(`🚀 Servidor corriendo en http://${host}:${port}`);
 }
 bootstrap();
